@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="renderer" content="webkit" />
+    <title>翌晨项目预警PC</title>
+    <link href="style/index.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="script/jquery-1.7.1.min.js"></script>
+</head>
+
+<body>
+
+<div class="login" id="app">
+    <div class="wal">
+        <div class="side">
+            <div class="logo"><img src="image/logo171.png" alt=""></div>
+            <h2>项目预警管理系统</h2>
+        </div>
+        <!--login-->
+        <div class="container" v-show="page == 'login'">
+            <div class="btn">
+                <ul>
+                    <li class="on"><a href="javascript:;" @click="page = 'login'">登录</a></li>
+                    <li><a href="javascript:;" @click="page = 'reg'">注册</a></li>
+                </ul>
+            </div>
+            <div v-show="loginName == 'form'">
+                <div class="form">
+                    <ul>
+                        <li>
+                            <div class="name">用户名 *</div>
+                            <div class="input"><input type="text" placeholder="请输入..."></div>
+                        </li>
+                        <li class="password">
+                            <div class="name">密码 *</div>
+                            <div class="input input-password"><input type="password" placeholder="请输入..."></div>
+                            <div class="input input-text"><input type="text" placeholder="请输入..."></div>
+                            <a href="javascript:;" class="btn"></a>
+                        </li>
+                        <li class="lzm">
+                            <div class="name">验证码 *</div>
+                            <div class="input"><input type="text" placeholder="请输入..."></div>
+                            <div class="img"><img src="image/img82.png" alt=""></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="submit">
+                    <div><input type="button" value="登 录"></div>
+                </div>
+                <div class="tips">如有问题，请拨打服务电话：400-999-000</div>
+            </div>
+            <div v-show="loginName == 'ewm'" class="ewm">
+                <div class="img"><img src="image/img223.png" alt=""></div>
+                <p>请使用微信扫描二维码登录</p>
+            </div>
+            <div class="btn2" :class="{on:loginName == 'ewm'}" @click="login()"></div>
+        </div>
+        <!--reg-->
+        <div class="container" v-show="page == 'reg'">
+            <div class="btn">
+                <ul>
+                    <li class="on"><a href="javascript:;" @click="page = 'reg'">注册</a></li>
+                    <li><a href="javascript:;" @click="page = 'login'">登录</a></li>
+                </ul>
+            </div>
+            <div class="form">
+                <ul>
+                    <li>
+                        <div class="name">手机号 *</div>
+                        <div class="input"><input type="text" placeholder="请输入..."></div>
+                    </li>
+                    <li class="lzm">
+                        <div class="name">验证码 *</div>
+                        <div class="input"><input type="text" placeholder="请输入..."></div>
+                        <a href="javascript:;" class="btn">56S</a>
+                    </li>
+                    <li class="password">
+                        <div class="name">密码 *</div>
+                        <div class="input input-password"><input type="password" placeholder="请输入..."></div>
+                        <div class="input input-text"><input type="text" placeholder="请输入..."></div>
+                        <a href="javascript:;" class="btn"></a>
+                    </li>
+                    <li class="password">
+                        <div class="name">确认密码 *</div>
+                        <div class="input input-password"><input type="password" placeholder="请输入..."></div>
+                        <div class="input input-text"><input type="text" placeholder="请输入..."></div>
+                        <a href="javascript:;" class="btn"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="submit">
+                <div><input type="button" value="登 录"></div>
+            </div>
+            <div class="tips">如有问题，请拨打服务电话：400-999-000</div>
+        </div>
+        <!---->
+    </div>
+    <div class="msg">©版权所有 2020 翌晨之光 (北京) 科技有限公司</div>
+</div>
+<script type="text/javascript" src="script/js.js"></script>
+
+<script src="script/vue/vue.js"></script>
+<script src="script/vue/vue-resource.min.js"></script>
+<script>
+    new Vue({
+        //delimiters: ['[[', ']]'],
+        el: '#app',
+        data:{
+            page: 'login',
+            loginName: 'form'
+        },
+        mounted:function () {
+        },
+        methods:{
+            login:function () {
+                this.loginName = this.loginName === 'form'?'ewm':'form'
+            }
+        }
+    })
+</script>
+<script>
+    $(function () {
+        let dom = $('.login'),
+            password = dom.find('.password');
+        password.each(function () {
+            let _ = $(this);
+            _.find('a.btn').click(function () {
+                if(_.hasClass('on')){
+                    _.find('.input-password input').val(_.find('.input-text input').val());
+                    _.removeClass('on')
+                }else{
+                    _.find('.input-text input').val(_.find('.input-password input').val());
+                    _.addClass('on')
+                }
+            })
+        })
+    })
+</script>
+
+</body>
+</html>

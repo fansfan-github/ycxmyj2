@@ -1,0 +1,287 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="renderer" content="webkit" />
+    <title>翌晨项目预警PC</title>
+    <link href="style/index.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="script/jquery-1.7.1.min.js"></script>
+</head>
+
+<body>
+
+<div id="app">
+    <div class="g-head">
+        <div class="logo">
+            <a href="" class="logo"><img src="image/logo152.png" alt=""></a>
+            <div class="name">项目预警管理系统</div>
+        </div>
+        <div class="info">
+            <div class="ico"><img src="image/img46.png" alt=""></div>
+            <div class="name">
+                <h3>赵大帅</h3>
+                <p>北京 - 信息科技部</p>
+            </div>
+            <div class="layer">
+                <dl>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="g-side">
+        <div class="nav">
+            <ul>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_1.png" alt=""><img src="image/img22_1on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>首页</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_2.png" alt=""><img src="image/img22_2on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_2.png" alt=""></div>
+                        <em>项目列表</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_3.png" alt=""><img src="image/img22_3on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>企业列表</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="on">
+                        <div class="ico"><img src="image/img22_4.png" alt=""><img src="image/img22_4on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>财报列表</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_10.png" alt=""><img src="image/img22_10on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>阈值设置</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_12.png" alt=""><img src="image/img22_12on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>用户管理</em>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <a href="" class="btn"></a>
+    </div>
+
+    <div class="g-container">
+        <!--g-container-->
+        <div class="p-box">
+            <div class="p-title">
+                <h2>财报详情</h2>
+                <a href="" class="btn">查看完整财报</a>
+            </div>
+            <div class="finance-show">
+                <div class="list">
+                    <ul>
+                        <li>
+                            <div class="box">
+                                <div class="ico"><img src="image/img48_4.png" alt=""></div>
+                                <div>
+                                    <div class="name">资产负债率</div>
+                                    <div class="num"><em>37.5</em>%</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="box">
+                                <div class="ico"><img src="image/img48_4.png" alt=""></div>
+                                <div>
+                                    <div class="name">净利润率</div>
+                                    <div class="num"><em>16.13</em>%</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="box">
+                                <div class="ico"><img src="image/img48_4.png" alt=""></div>
+                                <div>
+                                    <div class="name">净资产报酬率</div>
+                                    <div class="num"><em>1.33</em>%</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="box">
+                                <div class="ico"><img src="image/img48_4.png" alt=""></div>
+                                <div>
+                                    <div class="name">流动比率</div>
+                                    <div class="num"><em>7.20</em>%</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="chart-1">
+                    <div class="title">
+                        <h2>本期总资产分布情况</h2>
+                    </div>
+                    <div class="chart" id="bqzzcfbqk-chart"></div>
+                    <div class="col">
+                        <div class="name">本期总资产：</div>
+                        <div class="price"><em>3412.00</em>万元</div>
+                        <dl>
+                            <dd class="blue">
+                                <div>所有者权益</div>
+                                <em>25%</em>
+                            </dd>
+                            <dd class="orange">
+                                <div>总负债</div>
+                                <em>75%</em>
+                            </dd>
+                        </dl>
+                    </div>
+                    <script>
+                        $(function () {
+                            new pie_chart({
+                                dom: 'bqzzcfbqk-chart',
+                                data:[
+                                    {name:'所有者权益', value:25, color:'#1890ff'},
+                                    {name:'总负债', value:75, color:'#ff5c4a'}
+                                ]
+                            })
+                        })
+                    </script>
+                </div>
+                <div class="chart-2">
+                    <div class="title">
+                        <h2>净现金流量图表</h2>
+                        <dl class="tag">
+                            <dd class="blue">现金额度（亿）</dd>
+                            <dd class="orange">同比增长（%）</dd>
+                        </dl>
+                    </div>
+                    <div class="chart-info">(亿元)</div>
+                    <div class="chart" id="jxjlltb-chart"></div>
+                    <script>
+                        $(function () {
+                            new bar_line_chart({
+                                dom: 'jxjlltb-chart',
+                                data:{
+                                    list:[
+                                        {
+                                            name:'现金额度（亿）',
+                                            color:'#1890ff',
+                                            data: [3000, 2000, 1600, 2500, 1800, 1300, 2000, 2400, 2800, 3000],
+                                            type:'bar'
+                                        },{
+                                            name:'同比增长（%）',
+                                            color:'#ff5c4a',
+                                            data: [30, 40, 55, 35, 25, 45, 60, 40, 55, 65],
+                                            type:'line',
+                                            yAxisIndex: 1
+                                        }
+                                    ],
+                                    years:['2017.07','2017.08','2017.09','2017.10','2017.11','2017.12','2018.01','2018.02','2018.03','2018.04']
+                                }
+                            })
+                        })
+                    </script>
+                </div>
+                <div class="chart-3">
+                    <ul>
+                        <li>
+                            <div class="title">
+                                <h2>近三年总资产变化趋势</h2>
+                            </div>
+                            <div class="chart-info">(亿元)</div>
+                            <div class="chart" id="jslzzcbhqs-chart"></div>
+                            <script>
+                                $(function () {
+                                    new bar_line_chart({
+                                        dom: 'jslzzcbhqs-chart',
+                                        data:{
+                                            list:[
+                                                {
+                                                    name:'近三年总资产变化趋势',
+                                                    color:'#1890ff',
+                                                    data: [1000, 2000, 1600, 2500, 1800, 1300, 2000, 2400, 2800, 3000],
+                                                    type:'line'
+                                                }
+                                            ],
+                                            years:['2017.07','2017.08','2017.09','2017.10','2017.11','2017.12','2018.01','2018.02','2018.03','2018.04']
+                                        }
+                                    })
+                                })
+                            </script>
+                        </li>
+                        <li>
+                            <div class="title">
+                                <h2>近三年营业收入变化趋势</h2>
+                            </div>
+                            <div class="chart-info">(亿元)</div>
+                            <div class="chart" id="jslyysrbhqs-chart"></div>
+                            <script>
+                                $(function () {
+                                    new bar_line_chart({
+                                        dom: 'jslyysrbhqs-chart',
+                                        data:{
+                                            list:[
+                                                {
+                                                    name:'近三年营业收入变化趋势',
+                                                    color:'#1890ff',
+                                                    data: [1000, 2000, 1600, 2500, 1800, 1300, 2000, 2400, 2800, 3000],
+                                                    type:'line'
+                                                }
+                                            ],
+                                            years:['2017.07','2017.08','2017.09','2017.10','2017.11','2017.12','2018.01','2018.02','2018.03','2018.04']
+                                        }
+                                    })
+                                })
+                            </script>
+                        </li>
+                        <li>
+                            <div class="title">
+                                <h2>近三年净利润变化趋势</h2>
+                            </div>
+                            <div class="chart-info">(亿元)</div>
+                            <div class="chart" id="jsljlrbhqs-chart"></div>
+                            <script>
+                                $(function () {
+                                    new bar_line_chart({
+                                        dom: 'jsljlrbhqs-chart',
+                                        data:{
+                                            list:[
+                                                {
+                                                    name:'近三年净利润变化趋势',
+                                                    color:'#1890ff',
+                                                    data: [1000, 2000, 1600, 2500, 1800, 1300, 2000, 2400, 2800, 3000],
+                                                    type:'line'
+                                                }
+                                            ],
+                                            years:['2017.07','2017.08','2017.09','2017.10','2017.11','2017.12','2018.01','2018.02','2018.03','2018.04']
+                                        }
+                                    })
+                                })
+                            </script>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--g-container-end-->
+    </div>
+</div>
+<script type="text/javascript" src="script/js.js"></script>
+<script type="text/javascript" src="script/echarts.min.js"></script>
+<script type="text/javascript" src="script/charts.js"></script>
+
+</body>
+</html>

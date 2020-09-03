@@ -1,0 +1,443 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="renderer" content="webkit" />
+    <title>翌晨项目预警PC</title>
+    <link href="style/index.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="script/jquery-1.7.1.min.js"></script>
+</head>
+
+<body>
+
+<div id="app">
+    <div class="g-head">
+        <div class="logo">
+            <a href="" class="logo"><img src="image/logo152.png" alt=""></a>
+            <div class="name">项目预警管理系统</div>
+        </div>
+        <div class="info">
+            <div class="ico"><img src="image/img46.png" alt=""></div>
+            <div class="name">
+                <h3>赵大帅</h3>
+                <p>北京 - 信息科技部</p>
+            </div>
+            <div class="layer">
+                <dl>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="g-side">
+        <div class="nav">
+            <ul>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_1.png" alt=""><img src="image/img22_1on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>首页</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="on">
+                        <div class="ico"><img src="image/img22_2.png" alt=""><img src="image/img22_2on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_2.png" alt=""></div>
+                        <em>项目列表</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_3.png" alt=""><img src="image/img22_3on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>企业列表</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_4.png" alt=""><img src="image/img22_4on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>财报列表</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_10.png" alt=""><img src="image/img22_10on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>阈值设置</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_12.png" alt=""><img src="image/img22_12on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>用户管理</em>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <a href="" class="btn"></a>
+    </div>
+
+    <div class="g-container" style="overflow: hidden">
+        <!--g-container-->
+        <div class="p-box">
+            <div class="project-show-head">
+                <h2>翌晨【2019】339号流动资金贷款集合资金信托计划</h2>
+                <a href="" class="back" style="top: 24px">返回列表</a>
+                <div class="btn" style="height: 40px"></div>
+            </div>
+
+            <div id="project-show-box">
+                <div class="yuqing-nav">
+                    <div class="list" style="padding: 0">
+                        <ul>
+                            <li v-for="(item, index) in yuqing.list">
+                                <div class="num">{{index+1}}</div>
+                                <div class="name">{{item.name}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="yuqingBox">
+                    <div class="yuqing-1">
+                        <dl>
+                            <dd>
+                                <div class="ico"><img src="image/img54_1.png" alt=""></div>
+                                <div>
+                                    <div class="name">预警级别</div>
+                                    <em>橙色预警</em>
+                                </div>
+                            </dd>
+                            <dd>
+                                <div class="ico"><img src="image/img54_2.png" alt=""></div>
+                                <div>
+                                    <div class="name">预警条数</div>
+                                    <em>13条</em>
+                                </div>
+                            </dd>
+                        </dl>
+                    </div>
+                    <!---->
+                    <div class="p-box2" v-for="(item, index) in yuqing.list">
+                        <div class="p-title2">
+                            <h2>{{item.name}}</h2>
+                            <div class="num">{{item.number}}</div>
+                        </div>
+                        <template v-if="item.name == '风险概述'">
+                            <div class="yuqing-2">
+                                <ul>
+                                    <li v-for="_item in item.list" :class="_item.color">
+                                        <div>{{_item.text}}</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </template>
+                        <template v-if="item.name == '新闻信息' || item.name == '司法风险' || item.name == '经营风险' || item.name == '经营信息'">
+                            <div class="yuqing-3">
+                                <ul>
+                                    <li v-for="_item in item.list"><a href=""><b v-if="_item.info">{{_item.info}}</b>{{_item.name}}</a><em>{{_item.time}}</em></li>
+                                </ul>
+                            </div>
+                        </template>
+                        <template v-if="item.name == '财报信息'">
+                            <div class="yuqing-4">
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                    <tr>
+                                        <th>编号</th>
+                                        <th>财报时间</th>
+                                        <th>财报类型</th>
+                                        <th>来源</th>
+                                        <th>创建/复核</th>
+                                        <th>创建/复核时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    <tr v-for="(_item, _index) in item.list">
+                                        <td>{{_index+1}}</td>
+                                        <td>{{_item.time}}</td>
+                                        <td>{{_item.type}}</td>
+                                        <td>{{_item.source}}</td>
+                                        <td>{{_item.author}}</td>
+                                        <td>{{_item.time2}}</td>
+                                        <td class="btn"><a href="">查看</a> | <a href="">导出</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </template>
+                        <template v-if="item.name == '工商信息'">
+                            <div class="yuqing-5">
+                                <ul>
+                                    <li>
+                                        <div class="name">统一社会信用代码：</div>
+                                        <div class="input"><span>{{item.list[0]}}</span></div>
+                                    </li>
+                                    <li>
+                                        <div class="name">成立日期：</div>
+                                        <div class="input time"><span>{{item.list[1]}}</span></div>
+                                    </li>
+                                    <li>
+                                        <div class="name">名　　称：</div>
+                                        <div class="input"><span>{{item.list[2]}}</span></div>
+                                    </li>
+                                    <li>
+                                        <div class="name">类　　型：</div>
+                                        <div class="input select"><span>{{item.list[3]}}</span></div>
+                                    </li>
+                                    <li>
+                                        <div class="name">法定代表人：</div>
+                                        <div class="input"><span>{{item.list[4]}}</span></div>
+                                    </li>
+                                    <li>
+                                        <div class="name">注册资本：</div>
+                                        <div class="input"><span>{{item.list[5]}}</span></div>
+                                    </li>
+                                    <li class="li_01">
+                                        <div class="name">经营范围：</div>
+                                        <div class="input"><span>{{item.list[6]}}</span></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </template>
+                        <template v-if="item.name == '企业发展'">
+                            <div class="yuqing-4" style="padding-top: 0">
+                                <h2>· 核心团队</h2>
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                    <tr>
+                                        <th width="70">序号</th>
+                                        <th width="160" class="textLeft">姓名</th>
+                                        <th width="160" class="textLeft">职位</th>
+                                        <th class="textLeft">简介</th>
+                                    </tr>
+                                    <tr v-for="(_item, _index) in item.hxtd">
+                                        <td>{{_index+1}}</td>
+                                        <td class="textLeft">{{_item.name}}</td>
+                                        <td class="textLeft">{{_item.title}}</td>
+                                        <td class="textLeft">{{_item.info}}</td>
+                                    </tr>
+                                </table>
+                                <h2>· 企业业务</h2>
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                    <tr>
+                                        <th width="70">序号</th>
+                                        <th width="160" class="textLeft">产品名称</th>
+                                        <th width="160" class="textLeft">成立日期</th>
+                                        <th class="textLeft">当前融资轮次</th>
+                                    </tr>
+                                    <tr v-for="(_item, _index) in item.qyyw">
+                                        <td>{{_index+1}}</td>
+                                        <td class="textLeft">{{_item.name}}</td>
+                                        <td class="textLeft">{{_item.time}}</td>
+                                        <td class="textLeft">{{_item.curr}}</td>
+                                    </tr>
+                                </table>
+                                <h2>· 融资信息</h2>
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                    <tr>
+                                        <th width="70">序号</th>
+                                        <th width="160" class="textLeft">披露日期</th>
+                                        <th width="160" class="textLeft">交易金额</th>
+                                        <th class="textLeft">融资轮次</th>
+                                    </tr>
+                                    <tr v-for="(_item, _index) in item.rzxx">
+                                        <td>{{_index+1}}</td>
+                                        <td class="textLeft">{{_item.time}}</td>
+                                        <td class="textLeft">{{_item.price}}</td>
+                                        <td class="textLeft">{{_item.curr}}</td>
+                                    </tr>
+                                </table>
+                                <h2>· 融资信息</h2>
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                    <tr>
+                                        <th width="70">序号</th>
+                                        <th width="160" class="textLeft">投资机构</th>
+                                        <th width="160" class="textLeft">成立日期</th>
+                                        <th class="textLeft">所属地</th>
+                                    </tr>
+                                    <tr v-for="(_item, _index) in item.rzxx2">
+                                        <td>{{_index+1}}</td>
+                                        <td class="textLeft">{{_item.name}}</td>
+                                        <td class="textLeft">{{_item.time}}</td>
+                                        <td class="textLeft">{{_item.address}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </template>
+                        <template v-if="item.name == '知识产权'">
+                            <div class="yuqing-4" style="padding-top: 0">
+                                <h2>· 商标信息</h2>
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                    <tr>
+                                        <th width="70">序号</th>
+                                        <th width="160" class="textLeft">申请日期</th>
+                                        <th width="160" class="textLeft">商标名称</th>
+                                        <th class="textLeft">注册号</th>
+                                    </tr>
+                                    <tr v-for="(_item, _index) in item.sbxx">
+                                        <td>{{_index+1}}</td>
+                                        <td class="textLeft">{{_item.time}}</td>
+                                        <td class="textLeft">{{_item.name}}</td>
+                                        <td class="textLeft">{{_item.number}}</td>
+                                    </tr>
+                                </table>
+                                <h2>· 专利信息</h2>
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                    <tr>
+                                        <th width="70">序号</th>
+                                        <th width="160" class="textLeft">申请公布日</th>
+                                        <th class="textLeft">专利名称</th>
+                                    </tr>
+                                    <tr v-for="(_item, _index) in item.zlxx">
+                                        <td>{{_index+1}}</td>
+                                        <td class="textLeft">{{_item.time}}</td>
+                                        <td class="textLeft">{{_item.name}}</td>
+                                    </tr>
+                                </table>
+                                <h2>· 软件著作权</h2>
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                    <tr>
+                                        <th width="70">序号</th>
+                                        <th width="160" class="textLeft">登记批准日期</th>
+                                        <th class="textLeft">软件全称</th>
+                                    </tr>
+                                    <tr v-for="(_item, _index) in item.rjzzq">
+                                        <td>{{_index+1}}</td>
+                                        <td class="textLeft">{{_item.time}}</td>
+                                        <td class="textLeft">{{_item.name}}</td>
+                                    </tr>
+                                </table>
+                                <h2>· 作品著作权</h2>
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                    <tr>
+                                        <th width="70">序号</th>
+                                        <th width="325" class="textLeft">作品名称</th>
+                                        <th class="textLeft">登记</th>
+                                    </tr>
+                                    <tr v-for="(_item, _index) in item.rjzzq2">
+                                        <td>{{_index+1}}</td>
+                                        <td class="textLeft">{{_item.name}}</td>
+                                        <td class="textLeft">{{_item.dj}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </template>
+                        <template v-if="item.name == '评级记录'">
+                            <div class="yuqing-4">
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                    <tr>
+                                        <th width="70">序号</th>
+                                        <th width="160" class="textLeft">投资机构</th>
+                                        <th width="160" class="textLeft">成立日期</th>
+                                        <th class="textLeft">所属地</th>
+                                    </tr>
+                                    <tr v-for="(_item, _index) in item.list">
+                                        <td>{{_index+1}}</td>
+                                        <td class="textLeft">{{_item.name}}</td>
+                                        <td class="textLeft">{{_item.time}}</td>
+                                        <td class="textLeft">{{_item.address}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </template>
+                    </div>
+                    <!---->
+                </div>
+            </div>
+
+        </div>
+        <!--g-container-end-->
+    </div>
+</div>
+<script type="text/javascript" src="script/js.js"></script>
+<script type="text/javascript" src="script/echarts.min.js"></script>
+<script type="text/javascript" src="script/charts.js"></script>
+
+<script src="script/vue/vue.js"></script>
+<script src="script/vue/vue-resource.min.js"></script>
+<script>
+    new Vue({
+        //delimiters: ['[[', ']]'],
+        el: '#app',
+        data:{
+            yuqing:{
+                scroll: undefined,
+                list:[]
+            }
+        },
+        mounted:function () {
+            this.getData('data/yuqing.json')
+        },
+        methods:{
+            getData:function(url){
+                this.$http.get(url).then((res)=>{
+                    let data = res.data.data;
+                    this.yuqing.list = data;
+                    setTimeout(()=>{
+                        this.yuqing.scroll = new pageScroll()
+                    }, 500)
+                }, function () {
+                    console.log('请求失败处理')
+                })
+            },
+            companyChange:function (item) {
+                this.yuqing.company.name = item.name;
+                this.yuqing.company.url = item.url;
+                this.getData();
+                this.yuqing.scroll.reset()
+            }
+        }
+    })
+</script>
+<script>
+    $(function () {
+        heightFun();
+        $(window).resize(function () {
+            heightFun()
+        });
+        function heightFun() {
+            $('#project-show-box').height($(window).height() - $('.g-head').height() - 60 - $('.project-show-head').height())
+        }
+    });
+
+    function pageScroll() {
+        let li = $('.yuqing-nav').find('li'),
+            box = $('.yuqingBox'),
+            isClick = false,
+            top = [];
+        li.eq(0).addClass('on');
+        li.each(function (i) {
+            top.push(box.find('.p-box2').eq(i).offset().top - box.offset().top - 20);
+            $(this).click(function () {
+                isClick = true;
+                box.stop(true, true).animate({scrollTop: top[i]}, 300, function () {
+                    isClick = false
+                });
+                change(i)
+            })
+        });
+        box.scroll(function () {
+            if(isClick) return;
+            top.forEach(function (item, i) {
+                if(box.scrollTop() >= item){
+                    change(i)
+                }
+            })
+        });
+        function change(i) {
+            li.removeClass('on');
+            li.eq(i).addClass('on');
+        }
+        this.reset = function () {
+            isClick = true;
+            li.removeClass('on');
+            li.eq(0).addClass('on');
+            box.stop(true, true).animate({scrollTop: 0}, 300, function () {
+                isClick = false
+            })
+        }
+    }
+</script>
+
+</body>
+</html>

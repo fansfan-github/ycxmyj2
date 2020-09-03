@@ -1,0 +1,612 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="renderer" content="webkit" />
+    <title>翌晨项目预警PC</title>
+    <link href="style/index.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="script/jquery-1.7.1.min.js"></script>
+</head>
+
+<body>
+
+<div id="app">
+    <div class="g-head">
+        <div class="logo">
+            <a href="" class="logo"><img src="image/logo152.png" alt=""></a>
+            <div class="name">项目预警管理系统</div>
+        </div>
+        <div class="info">
+            <div class="ico"><img src="image/img46.png" alt=""></div>
+            <div class="name">
+                <h3>赵大帅</h3>
+                <p>北京 - 信息科技部</p>
+            </div>
+            <div class="layer">
+                <dl>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="g-side">
+        <div class="nav">
+            <ul>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_1.png" alt=""><img src="image/img22_1on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>首页</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_2.png" alt=""><img src="image/img22_2on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_2.png" alt=""></div>
+                        <em>项目列表</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_3.png" alt=""><img src="image/img22_3on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>企业列表</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_4.png" alt=""><img src="image/img22_4on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>财报列表</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="on">
+                        <div class="ico"><img src="image/img22_10.png" alt=""><img src="image/img22_10on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>阈值设置</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_12.png" alt=""><img src="image/img22_12on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>用户管理</em>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <a href="" class="btn"></a>
+    </div>
+
+    <div class="g-container">
+        <!--g-container-->
+        <div class="p-box">
+            <div class="p-nav">
+                <ul>
+                    <li :class="{'on':pageName == '标签等级'}" @click="pageName = '标签等级'">标签等级</li>
+                    <li :class="{'on':pageName == '财务阈值'}" @click="pageName = '财务阈值'">财务阈值</li>
+                </ul>
+            </div>
+            <template v-if="pageName == '标签等级'">
+                <div class="tags">
+                    <ul>
+                        <li v-for="item in tags" :class="item.value | tagsFilter">
+                            <div class="name">{{item.name}}：</div>
+                            <div class="line">
+                                <div :style="'width:'+item.value+'%'"></div>
+                                <input type="range" min="0" max="100" v-model="item.value">
+                            </div>
+                            <em>{{item.value | tagsFilter2}}</em>
+                        </li>
+                    </ul>
+                </div>
+            </template>
+            <div class="cwfz" v-show="pageName == '财务阈值'">
+                <div class="title">· 盈利能力</div>
+                <div class="list">
+                    <div class="name">
+                        <div class="col-1">指标</div>
+                        <div class="col-2">计算公式</div>
+                        <div class="col-3">预警值</div>
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="col-1">投资资本回报率（ROIC）</div>
+                            <div class="col-2">(营业利润+财务费用)/（短期借款+应付票据+长期借款+应付债权）</div>
+                            <div class="col-3">
+                                <div class="select"><span>{{cwfz.roic.select1.value}}</span>
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd v-for="item in cwfz.roic.select1.list" @click="cwfz.roic.select1.value = item">{{item}}</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="select select-2"><input type="text" v-model="cwfz.roic.select2.value">
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd v-for="item in cwfz.roic.select2.list" @click="cwfz.roic.select2.value = item">{{item}}</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col-1">总资产回报率（ROA）</div>
+                            <div class="col-2">净利润/总资产</div>
+                            <div class="col-3">
+                                <div class="select"><span>{{cwfz.roa.select1.value}}</span>
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd v-for="item in cwfz.roa.select1.list" @click="cwfz.roa.select1.value = item">{{item}}</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="select select-2"><input type="text" v-model="cwfz.roa.select2.value">
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd v-for="item in cwfz.roa.select2.list" @click="cwfz.roa.select2.value = item">{{item}}</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col-1">净资产回报率（ROE）</div>
+                            <div class="col-2">净利润/净资产</div>
+                            <div class="col-3">
+                                <div class="select"><span>小于</span>
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>小于</dd>
+                                            <dd>大于</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="select select-2"><input type="text" value="5%">
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>5%</dd>
+                                            <dd>10%</dd>
+                                            <dd>20%</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col-1">销售毛利率</div>
+                            <div class="col-2">(营业收入-营业成本)/营业收入</div>
+                            <div class="col-3">
+                                <div class="select"><span>同比下降超过</span>
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>同比下降超过</dd>
+                                            <dd>同比下降超过</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="select select-2"><input type="text" value="5%">
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>5%</dd>
+                                            <dd>10%</dd>
+                                            <dd>20%</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col-1">销售净利率</div>
+                            <div class="col-2">净利润/营业收入</div>
+                            <div class="col-3">
+                                <div class="select"><span>同比下降超过</span>
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>同比下降超过</dd>
+                                            <dd>同比下降超过</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="select select-2"><input type="text" value="5%">
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>5%</dd>
+                                            <dd>10%</dd>
+                                            <dd>20%</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="title">· 偿债能力</div>
+                <div class="list">
+                    <div class="name">
+                        <div class="col-1">指标</div>
+                        <div class="col-2">计算公式</div>
+                        <div class="col-3">预警值</div>
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="col-1">资产负债率</div>
+                            <div class="col-2">总负债/总资产</div>
+                            <div class="col-3">
+                                <div class="select"><span>大于等于</span>
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>大于等于</dd>
+                                            <dd>小于等于</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="select select-2"><input type="text" value="5%">
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>85%</dd>
+                                            <dd>10%</dd>
+                                            <dd>20%</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col-1">剔除预售账款的资产负债率</div>
+                            <div class="col-2">(总负债-预收款项)/总资产</div>
+                            <div class="col-3">
+                                <div class="select"><span>大于等于</span>
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>大于等于</dd>
+                                            <dd>小于等于</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="select select-2"><input type="text" value="5%">
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>85%</dd>
+                                            <dd>10%</dd>
+                                            <dd>20%</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col-1">净债务率</div>
+                            <div class="col-2">(带息债务-货币资金)/净资产</div>
+                            <div class="col-3">
+                                <div class="select"><span>大于等于</span>
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>大于等于</dd>
+                                            <dd>小于等于</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="select select-2"><input type="text" value="5%">
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>85%</dd>
+                                            <dd>10%</dd>
+                                            <dd>20%</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col-1">经营性净现金流/带息债务</div>
+                            <div class="col-2">— —</div>
+                            <div class="col-3">— —</div>
+                        </li>
+                        <li>
+                            <div class="col-1">EBITDA/带息债务</div>
+                            <div class="col-2">— —</div>
+                            <div class="col-3">— —</div>
+                        </li>
+                        <li>
+                            <div class="col-1">流动比率</div>
+                            <div class="col-2">流动资产/流动负债</div>
+                            <div class="col-3">
+                                <div class="select"><span>小于</span>
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>小于</dd>
+                                            <dd>大于</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="select select-2"><input type="text" value="5%">
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>5%</dd>
+                                            <dd>10%</dd>
+                                            <dd>20%</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col-1">速动比率</div>
+                            <div class="col-2">(流动资产-存货)/流动负债</div>
+                            <div class="col-3">
+                                <div class="select"><span>小于</span>
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>小于</dd>
+                                            <dd>大于</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="select select-2"><input type="text" value="5%">
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>5%</dd>
+                                            <dd>10%</dd>
+                                            <dd>20%</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col-1">利息覆盖倍数</div>
+                            <div class="col-2">息税前利润/财务费用</div>
+                            <div class="col-3">
+                                <div class="select"><span>小于</span>
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>小于</dd>
+                                            <dd>大于</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="select select-2"><input type="text" value="5%">
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>5%</dd>
+                                            <dd>10%</dd>
+                                            <dd>20%</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="title">· 营运能力</div>
+                <div class="list">
+                    <div class="name">
+                        <div class="col-1">指标</div>
+                        <div class="col-2">计算公式</div>
+                        <div class="col-3">预警值</div>
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="col-1">存货周转率（次）</div>
+                            <div class="col-2">营业成本/平均存货</div>
+                            <div class="col-3">
+                                <div class="select"><span>小于</span>
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>小于</dd>
+                                            <dd>大于</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="select select-2"><input type="text" value="5%">
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>5%</dd>
+                                            <dd>10%</dd>
+                                            <dd>20%</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col-1">应收账款周转率（次）</div>
+                            <div class="col-2">营业收入/平均应收账款</div>
+                            <div class="col-3">
+                                <div class="select"><span>小于</span>
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>小于</dd>
+                                            <dd>大于</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="select select-2"><input type="text" value="5%">
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>5%</dd>
+                                            <dd>10%</dd>
+                                            <dd>20%</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col-1">总资产周转率（次）</div>
+                            <div class="col-2">营业收入、平均资产</div>
+                            <div class="col-3">
+                                <div class="select"><span>小于</span>
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>小于</dd>
+                                            <dd>大于</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="select select-2"><input type="text" value="5%">
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>5%</dd>
+                                            <dd>10%</dd>
+                                            <dd>20%</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="title">· 债务结构</div>
+                <div class="list">
+                    <div class="name">
+                        <div class="col-1">指标</div>
+                        <div class="col-2">计算公式</div>
+                        <div class="col-3">预警值</div>
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="col-1">短期债务</div>
+                            <div class="col-2">短期借款+应付票据+一年内到期非流动负债</div>
+                            <div class="col-3">— —</div>
+                        </li>
+                        <li>
+                            <div class="col-1">长期债务</div>
+                            <div class="col-2">长期借款+应付债券+其他非流动负债</div>
+                            <div class="col-3">— —</div>
+                        </li>
+                        <li>
+                            <div class="col-1">长短期债务比</div>
+                            <div class="col-2">短期债务/长期债务</div>
+                            <div class="col-3">
+                                <div class="select"><span>小于</span>
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>小于</dd>
+                                            <dd>大于</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="select select-2"><input type="text" value="5%">
+                                    <div class="select-layer">
+                                        <dl>
+                                            <dd>5%</dd>
+                                            <dd>10%</dd>
+                                            <dd>20%</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="finance-btn">
+                <a href="" class="prev">取 消</a>
+                <a href="javascript:;" @click="formSubmit()">保 存</a>
+            </div>
+        </div>
+        <!--g-container-end-->
+    </div>
+</div>
+<script type="text/javascript" src="script/js.js"></script>
+
+<script src="script/vue/vue.js"></script>
+<script src="script/vue/vue-resource.min.js"></script>
+<script>
+    new Vue({
+        //delimiters: ['[[', ']]'],
+        el: '#app',
+        data:{
+            pageName:'标签等级',
+            tags:[
+                {name:'裁判文书', value:10},
+                {name:'担保', value:50},
+                {name:'动产抵押', value:20},
+                {name:'检索事件', value:70},
+                {name:'股权出质', value:40},
+                {name:'工商变更', value:90},
+                {name:'备案信息', value:20},
+                {name:'经营异常', value:50},
+                {name:'开庭公告', value:10},
+                {name:'专利', value:70},
+                {name:'催缴/欠税', value:80},
+                {name:'司法协助', value:20},
+                {name:'失信被执行人', value:70},
+                {name:'审判流程', value:30},
+                {name:'涉诉公告', value:80},
+                {name:'重大税收违法', value:40},
+                {name:'税务非正常户', value:50},
+                {name:'商标', value:90},
+                {name:'土地信息', value:50},
+                {name:'信息披露', value:40},
+                {name:'行政处罚', value:30},
+                {name:'行政许可', value:70},
+                {name:'被执行人', value:80},
+                {name:'债券公告', value:90},
+                {name:'著作权', value:50},
+                {name:'招投标', value:60}
+            ],
+            cwfz:{
+                roic:{
+                    select1:{
+                        value:'小于',
+                        list:['小于', '大于']
+                    },
+                    select2:{
+                        value:'5%',
+                        list:['5%', '10%', '15%']
+                    }
+                },
+                roa:{
+                    select1:{
+                        value:'小于',
+                        list:['小于', '大于']
+                    },
+                    select2:{
+                        value:'5%',
+                        list:['5%', '10%', '15%', '35%', '55%']
+                    }
+                }
+            }
+
+        },
+        mounted:function () {},
+        filters:{
+            tagsFilter: function (value) {
+                if(value <= 25){
+                    return 'blue'
+                }else if(value <= 50){
+                    return 'yellow'
+                }else if(value <= 75){
+                    return 'orange'
+                }else if(value <= 100){
+                    return 'red'
+                }
+            },
+            tagsFilter2: function (value) {
+                if(value <= 25){
+                    return '蓝'
+                }else if(value <= 50){
+                    return '黄'
+                }else if(value <= 75){
+                    return '橙'
+                }else if(value <= 100){
+                    return '红'
+                }
+            }
+        },
+        methods:{
+            formSubmit: function () {
+                console.log('提交内容：' + this.cwfz.roic.select1.value + this.cwfz.roic.select2.value + this.cwfz.roa.select1.value + this.cwfz.roa.select2.value)
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

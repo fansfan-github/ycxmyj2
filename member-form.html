@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="renderer" content="webkit" />
+    <title>翌晨项目预警PC</title>
+    <link href="style/index.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="script/jquery-1.7.1.min.js"></script>
+</head>
+
+<body>
+
+<div id="app">
+    <div class="g-head">
+        <div class="logo">
+            <a href="" class="logo"><img src="image/logo152.png" alt=""></a>
+            <div class="name">项目预警管理系统</div>
+        </div>
+        <div class="info">
+            <div class="ico"><img src="image/img46.png" alt=""></div>
+            <div class="name">
+                <h3>赵大帅</h3>
+                <p>北京 - 信息科技部</p>
+            </div>
+            <div class="layer">
+                <dl>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="g-side">
+        <div class="nav">
+            <ul>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_1.png" alt=""><img src="image/img22_1on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>首页</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_2.png" alt=""><img src="image/img22_2on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_2.png" alt=""></div>
+                        <em>项目列表</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_3.png" alt=""><img src="image/img22_3on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>企业列表</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_4.png" alt=""><img src="image/img22_4on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>财报列表</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_10.png" alt=""><img src="image/img22_10on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>阈值设置</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="on">
+                        <div class="ico"><img src="image/img22_12.png" alt=""><img src="image/img22_12on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>用户管理</em>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <a href="" class="btn"></a>
+    </div>
+
+    <div class="g-container">
+        <!--g-container-->
+        <div class="p-box">
+            <div class="p-title">
+                <h2>新增用户</h2>
+            </div>
+            <div class="member-form">
+                <ul>
+                    <li>
+                        <div class="name">用户名：</div>
+                        <div class="input"><input type="text" v-model="form.name"></div>
+                    </li>
+                    <li>
+                        <div class="name">密码：</div>
+                        <div class="input"><input type="password" v-model="form.password"></div>
+                    </li>
+                    <li>
+                        <div class="name">部门：</div>
+                        <div class="select"><span>{{form.department.name}}</span>
+                            <div class="select-layer">
+                                <dl>
+                                    <dd v-for="item in form.department.list" @click="form.department.name = item">{{item}}</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="name">信托经理ID：</div>
+                        <div class="input"><input type="text" v-model="form.id"></div>
+                    </li>
+                    <li>
+                        <div class="name">信托经理姓名：</div>
+                        <div class="input"><input type="text" v-model="form.name2"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="finance-btn">
+                <a href="" class="prev">取消</a>
+                <a href="">确定</a>
+            </div>
+        </div>
+        <!--g-container-end-->
+    </div>
+</div>
+<script type="text/javascript" src="script/js.js"></script>
+<script type="text/javascript" src="script/echarts.min.js"></script>
+<script type="text/javascript" src="script/charts.js"></script>
+
+<script src="script/vue/vue.js"></script>
+<script src="script/vue/vue-resource.min.js"></script>
+<script>
+    new Vue({
+        //delimiters: ['[[', ']]'],
+        el: '#app',
+        data:{
+            form:{
+                name:'15032201688',
+                password:'123456',
+                department:{
+                    name:'信息科技部',
+                    list:['信息科技部1', '信息科技部2', '信息科技部3']
+                },
+                id:'1001',
+                name2:'赵大帅',
+            }
+        },
+        mounted:function () {
+            },
+        methods:{
+        }
+    })
+</script>
+
+</body>
+</html>

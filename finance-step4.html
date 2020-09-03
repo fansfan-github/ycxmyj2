@@ -1,0 +1,344 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="renderer" content="webkit" />
+    <title>翌晨项目预警PC</title>
+    <link href="style/index.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="script/jquery-1.7.1.min.js"></script>
+</head>
+
+<body>
+
+<div id="app">
+    <div class="g-head">
+        <div class="logo">
+            <a href="" class="logo"><img src="image/logo152.png" alt=""></a>
+            <div class="name">项目预警管理系统</div>
+        </div>
+        <div class="info">
+            <div class="ico"><img src="image/img46.png" alt=""></div>
+            <div class="name">
+                <h3>赵大帅</h3>
+                <p>北京 - 信息科技部</p>
+            </div>
+            <div class="layer">
+                <dl>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="g-side">
+        <div class="nav">
+            <ul>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_1.png" alt=""><img src="image/img22_1on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>首页</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_2.png" alt=""><img src="image/img22_2on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_2.png" alt=""></div>
+                        <em>项目列表</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_3.png" alt=""><img src="image/img22_3on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>企业列表</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="on">
+                        <div class="ico"><img src="image/img22_4.png" alt=""><img src="image/img22_4on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>财报列表</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_10.png" alt=""><img src="image/img22_10on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>阈值设置</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_12.png" alt=""><img src="image/img22_12on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>用户管理</em>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <a href="" class="btn"></a>
+    </div>
+
+    <div class="g-container" style="overflow: hidden">
+        <!--g-container-->
+        <div class="p-box">
+            <div class="p-title">
+                <h2>财报详情</h2>
+            </div>
+            <div class="p-step">
+                <ul>
+                    <li>
+                        <div class="num">1</div>
+                        <div class="name">企业信息</div>
+                    </li>
+                    <li>
+                        <div class="num">2</div>
+                        <div class="name">资产负债表</div>
+                    </li>
+                    <li>
+                        <div class="num">3</div>
+                        <div class="name">利润表</div>
+                    </li>
+                    <li class="on">
+                        <div class="num">4</div>
+                        <div class="name">现金流量表</div>
+                    </li>
+                    <li>
+                        <div class="num">5</div>
+                        <div class="name">附注</div>
+                    </li>
+                </ul>
+            </div>
+            <div id="financeBox" style="padding: 40px 50px">
+                <div class="p-box2">
+                    <div class="p-title2">
+                        <h2>现金流量表</h2>
+                        <a href="" class="btn">excel一键导出</a>
+                    </div>
+                    <div class="financeTable">
+                        <h2>· 经营活动产生的现金流量</h2>
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <th width="64">代码</th>
+                                <th class="textLeft">项目</th>
+                                <th width="170">期末余额(万元)</th>
+                                <th width="170">期初余额(万元)</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td class="textLeft">货币资金</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td class="textLeft">衍生金融资产</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td class="textLeft">应收票据</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td class="textLeft">应收账款</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td class="textLeft">其他应收款</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td class="textLeft">存货</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td class="textLeft">持有待售资产</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td class="textLeft">一年内到期的非流动资产</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td class="textLeft">其他流动资产流动资产合计</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td class="textLeft">以公允价值计量且其变动计入当期损益的金融资产</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                        </table>
+                        <h2>· 投资活动产生的现金流量</h2>
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <th width="64">代码</th>
+                                <th class="textLeft">项目</th>
+                                <th width="170">期末余额(万元)</th>
+                                <th width="170">期初余额(万元)</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td class="textLeft">货币资金</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td class="textLeft">衍生金融资产</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td class="textLeft">应收票据</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td class="textLeft">应收账款</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td class="textLeft">其他应收款</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td class="textLeft">存货</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td class="textLeft">持有待售资产</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td class="textLeft">一年内到期的非流动资产</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td class="textLeft">其他流动资产流动资产合计</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td class="textLeft">以公允价值计量且其变动计入当期损益的金融资产</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                        </table>
+                        <h2>· 筹资活动产生的现金流量</h2>
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <th width="64">代码</th>
+                                <th class="textLeft">项目</th>
+                                <th width="170">期末余额(万元)</th>
+                                <th width="170">期初余额(万元)</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td class="textLeft">货币资金</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td class="textLeft">衍生金融资产</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td class="textLeft">应收票据</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td class="textLeft">应收账款</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td class="textLeft">其他应收款</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td class="textLeft">存货</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td class="textLeft">持有待售资产</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td class="textLeft">一年内到期的非流动资产</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td class="textLeft">其他流动资产流动资产合计</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td class="textLeft">以公允价值计量且其变动计入当期损益的金融资产</td>
+                                <td class="blue">20,239,034</td>
+                                <td>20,239,034</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="finance-btn">
+                <a href="" class="prev">上一项</a>
+                <a href="">下一项</a>
+            </div>
+        </div>
+        <!--g-container-end-->
+    </div>
+</div>
+<script type="text/javascript" src="script/js.js"></script>
+<script type="text/javascript" src="script/echarts.min.js"></script>
+<script type="text/javascript" src="script/charts.js"></script>
+
+</body>
+</html>

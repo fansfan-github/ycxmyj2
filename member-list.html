@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="renderer" content="webkit" />
+    <title>翌晨项目预警PC</title>
+    <link href="style/index.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="script/jquery-1.7.1.min.js"></script>
+</head>
+
+<body>
+
+<div id="app">
+    <div class="g-head">
+        <div class="logo">
+            <a href="" class="logo"><img src="image/logo152.png" alt=""></a>
+            <div class="name">项目预警管理系统</div>
+        </div>
+        <div class="info">
+            <div class="ico"><img src="image/img46.png" alt=""></div>
+            <div class="name">
+                <h3>赵大帅</h3>
+                <p>北京 - 信息科技部</p>
+            </div>
+            <div class="layer">
+                <dl>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="g-side">
+        <div class="nav">
+            <ul>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_1.png" alt=""><img src="image/img22_1on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>首页</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_2.png" alt=""><img src="image/img22_2on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_2.png" alt=""></div>
+                        <em>项目列表</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_3.png" alt=""><img src="image/img22_3on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>企业列表</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_4.png" alt=""><img src="image/img22_4on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>财报列表</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_10.png" alt=""><img src="image/img22_10on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>阈值设置</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="on">
+                        <div class="ico"><img src="image/img22_12.png" alt=""><img src="image/img22_12on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>用户管理</em>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <a href="" class="btn"></a>
+    </div>
+
+    <div class="g-container">
+        <!--g-container-->
+        <div class="p-box">
+            <div class="p-title">
+                <h2>用户管理</h2>
+                <div class="col formCol">
+                    <div class="form">
+                        <div class="input"><input type="text" placeholder=""></div>
+                        <div class="submit"><input type="button" value=""><em>搜索</em></div>
+                    </div>
+                    <a href="" class="btn2">添加</a>
+                </div>
+            </div>
+            <div class="yujingList">
+                <div class="title">
+                    <div class="col col-code">ID</div>
+                    <div class="col col-name">用户名</div>
+                    <div class="col col-time">密码</div>
+                    <div class="col col-source">部门</div>
+                    <div class="col col-type">信托经理ID</div>
+                    <div class="col col-grade">信托经理姓名</div>
+                    <div class="col col-btn">操作</div>
+                </div>
+                <ul>
+                    <li v-for="(item, index) in yujingList">
+                        <div class="col col-code"><b>{{item.code}}</b><i v-if="item.isNew"></i></div>
+                        <div class="col col-name">{{item.name}}</div>
+                        <div class="col col-time">{{item.password}}</div>
+                        <div class="col col-source">{{item.department}}</div>
+                        <div class="col col-type">{{item.id}}</div>
+                        <div class="col col-grade">{{item.name2}}</div>
+                        <div class="col col-btn">
+                            <a :href="item.url">修改</a> | <a href="">删除</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="p-num">
+                <a href="" class="arrow prev"></a>
+                <a href="">1</a>
+                <a href="" class="on">2</a>
+                <a href="">3</a>
+                <a href="">4</a>
+                <a href="">5</a>
+                <em></em>
+                <a href="">20</a>
+                <a href="" class="arrow next"></a>
+            </div>
+        </div>
+        <!--g-container-end-->
+    </div>
+</div>
+<script type="text/javascript" src="script/js.js"></script>
+<script type="text/javascript" src="script/echarts.min.js"></script>
+<script type="text/javascript" src="script/charts.js"></script>
+
+<script src="script/vue/vue.js"></script>
+<script src="script/vue/vue-resource.min.js"></script>
+<script>
+    new Vue({
+        //delimiters: ['[[', ']]'],
+        el: '#app',
+        data:{
+            //用户管理
+            yujingList:[
+                {code:'001', name:'15032201688', password:'123456', department:'信息技术部', id:'1001', name2:'赵大帅', url:'完整地址'},
+                {code:'002', name:'15032201688', password:'123456', department:'信息技术部', id:'1002', name2:'赵大帅'},
+                {code:'003', name:'15032201688', password:'123456', department:'信息技术部', id:'1003', name2:'赵大帅'},
+                {code:'004', name:'15032201688', password:'123456', department:'信息技术部', id:'1004', name2:'赵大帅'},
+                {code:'005', name:'15032201688', password:'123456', department:'信息技术部', id:'1005', name2:'赵大帅'},
+                {code:'006', name:'15032201688', password:'123456', department:'信息技术部', id:'1007', name2:'赵大帅'},
+                {code:'007', name:'15032201688', password:'123456', department:'信息技术部', id:'1101', name2:'赵大帅'},
+                {code:'008', name:'15032201688', password:'123456', department:'信息技术部', id:'1201', name2:'赵大帅'},
+                {code:'009', name:'15032201688', password:'123456', department:'信息技术部', id:'1102', name2:'赵大帅'},
+                {code:'010', name:'15032201688', password:'123456', department:'信息技术部', id:'1105', name2:'赵大帅'}
+            ]
+        },
+        mounted:function () {
+            },
+        methods:{
+        }
+    })
+</script>
+
+</body>
+</html>

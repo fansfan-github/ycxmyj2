@@ -1,0 +1,396 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="renderer" content="webkit" />
+    <title>翌晨项目预警PC</title>
+    <link href="style/index.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="script/jquery-1.7.1.min.js"></script>
+</head>
+
+<body>
+
+<div id="app">
+    <div class="g-head">
+        <div class="logo">
+            <a href="" class="logo"><img src="image/logo152.png" alt=""></a>
+            <div class="name">项目预警管理系统</div>
+        </div>
+        <div class="info">
+            <div class="ico"><img src="image/img46.png" alt=""></div>
+            <div class="name">
+                <h3>赵大帅</h3>
+                <p>北京 - 信息科技部</p>
+            </div>
+            <div class="layer">
+                <dl>
+                    <dd><a href="">退出</a></dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="g-side">
+        <div class="nav">
+            <ul>
+                <li>
+                    <a href="" class="on">
+                        <div class="ico"><img src="image/img22_1.png" alt=""><img src="image/img22_1on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>首页</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_2.png" alt=""><img src="image/img22_2on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_2.png" alt=""></div>
+                        <em>项目列表</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_3.png" alt=""><img src="image/img22_3on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>企业列表</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_4.png" alt=""><img src="image/img22_4on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>财报列表</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_10.png" alt=""><img src="image/img22_10on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>阈值设置</em>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="ico"><img src="image/img22_12.png" alt=""><img src="image/img22_12on.png" alt=""></div>
+                        <div class="ico2"><img src="image/img42_1.png" alt=""></div>
+                        <em>用户管理</em>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <a href="" class="btn"></a>
+    </div>
+
+    <div class="g-container">
+        <!--g-container-->
+        <div class="p-box index-tips">
+            <div class="msg">今日新增舆情<em>55</em>条</div>
+            <dl class="info">
+                <dd class="red">12</dd>
+                <dd class="orange">18</dd>
+                <dd class="yellow">20</dd>
+            </dl>
+            <a href="" class="close"></a>
+        </div>
+
+        <div class="index-1">
+            <div class="col">
+                <div class="p-box index-1-1">
+                    <div class="col-1">
+                        <div class="ico"><img src="image/img68.png" alt=""></div>
+                        <div class="name">舆情信息</div>
+                        <div class="num"><b>18732</b></div>
+                    </div>
+                    <div class="col-2">
+                        <div class="name">红色舆情</div>
+                        <div class="num"><b>7580</b><em>红</em></div>
+                    </div>
+                    <div class="col-2">
+                        <div class="name">橙色舆情</div>
+                        <div class="num orange"><b>1947</b><em>橙</em></div>
+                    </div>
+                    <div class="col-2">
+                        <div class="name">黄色舆情</div>
+                        <div class="num yellow"><b>5880</b><em>黄</em></div>
+                    </div>
+                </div>
+                <div class="index-1-2">
+                    <ul>
+                        <li>
+                            <div class="p-box">
+                                <div class="name">风险项目</div>
+                                <div class="num"><b>56</b><em>/100</em></div>
+                                <div class="ico"><img src="image/img48.png" alt=""></div>
+                                <a href="" class="more">查看全部 >></a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="p-box">
+                                <div class="name">逾期项目</div>
+                                <div class="num"><b>17</b><em>/100</em></div>
+                                <div class="ico"><img src="image/img48_2.png" alt=""></div>
+                                <a href="" class="more">查看全部 >></a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="p-box">
+                                <div class="name">公司财报</div>
+                                <div class="num"><b>39</b><em>/100</em></div>
+                                <div class="ico"><img src="image/img48_3.png" alt=""></div>
+                                <a href="" class="more">查看全部 >></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="p-box index-1-3">
+                <div class="btn">
+                    <ul>
+                        <li :class="{'on':yqyqzs.name == 0}" @click="yqyqzsTab(0)">舆情走势</li>
+                        <li :class="{'on':yqyqzs.name == 1}" @click="yqyqzsTab(1)">逾期走势</li>
+                    </ul>
+                </div>
+                <div class="select"><span>{{yqyqzs.select.list[yqyqzs.select.name]}}</span>
+                    <div class="select-layer">
+                        <dl>
+                            <dd v-for="(item, index) in yqyqzs.select.list" @click="yqyqzsSelect(index)">{{item}}</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="chart" id="index-1-chart"></div>
+            </div>
+        </div>
+
+        <div class="p-box">
+            <div class="p-title">
+                <h2>预警列表</h2>
+                <div class="col formCol">
+                    <div class="select"><span>预警等级</span>
+                        <div class="select-layer">
+                            <dl>
+                                <dd>选项一</dd>
+                                <dd>选项二</dd>
+                                <dd>选项三</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="select"><span>预警类型</span>
+                        <div class="select-layer">
+                            <dl>
+                                <dd>选项一</dd>
+                                <dd>选项二</dd>
+                                <dd>选项三</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="select"><span>预警来源</span>
+                        <div class="select-layer">
+                            <dl>
+                                <dd>选项一</dd>
+                                <dd>选项二</dd>
+                                <dd>选项三</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="form">
+                        <div class="input"><input type="text" placeholder=""></div>
+                        <div class="submit"><input type="button" value=""><em>搜索</em></div>
+                    </div>
+                </div>
+            </div>
+            <div class="yujingList">
+                <div class="title">
+                    <div class="col col-code">代码</div>
+                    <div class="col col-name">产品名称</div>
+                    <div class="col col-time">预警时间</div>
+                    <div class="col col-source">来源</div>
+                    <div class="col col-type">类型</div>
+                    <div class="col col-grade">等级</div>
+                    <div class="col col-btn">操作</div>
+                </div>
+                <ul>
+                    <li v-for="(item, index) in yujingList">
+                        <div class="col col-code"><b>{{item.code}}</b><i v-if="item.isNew"></i></div>
+                        <div class="col col-name">{{item.name}}</div>
+                        <div class="col col-time">{{item.time}}</div>
+                        <div class="col col-source">{{item.source}}</div>
+                        <div class="col col-type">{{item.type}}</div>
+                        <div class="col col-grade" :class="item.grade.color">{{item.grade.text}}</div>
+                        <div class="col col-btn">
+                            <a href="">査看</a> | <a href="">调整预警级别</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="p-num">
+                <a href="" class="arrow prev"></a>
+                <a href="">1</a>
+                <a href="" class="on">2</a>
+                <a href="">3</a>
+                <a href="">4</a>
+                <a href="">5</a>
+                <em></em>
+                <a href="">20</a>
+                <a href="" class="arrow next"></a>
+            </div>
+        </div>
+        <!--g-container-end-->
+    </div>
+</div>
+<script type="text/javascript" src="script/js.js"></script>
+<script type="text/javascript" src="script/echarts.min.js"></script>
+<script type="text/javascript" src="script/charts.js"></script>
+
+<script src="script/vue/vue.js"></script>
+<script src="script/vue/vue-resource.min.js"></script>
+<script>
+    new Vue({
+        //delimiters: ['[[', ']]'],
+        el: '#app',
+        data:{
+            //舆情走势-逾期走势
+            yqyqzs:{
+                name:0,
+                select:{
+                    name:0,
+                    list:['最近7天', '最近15天', '最近30天']
+                },
+                data:[
+                    [
+                        {
+                            list: [
+                                {
+                                    name: '',
+                                    color: '#6fa7fd',
+                                    data: [20, 25, 30, 28, 16, 28, 30],
+                                    ico: 'image://image/img10_1.png'
+                                }, {
+                                    name: '',
+                                    color: '#fe646b',
+                                    data: [10, 15, 20, 18, 12, 18, 25],
+                                    ico: 'image://image/img10_2.png'
+                                }
+                            ],
+                            years: ['1', '2', '3', '4', '5', '6', '7']
+                        }, {
+                        list: [
+                            {
+                                name: '',
+                                color: '#6fa7fd',
+                                data: [20, 25, 30, 28, 16, 28, 30],
+                                ico: 'image://image/img10_1.png'
+                            }, {
+                                name: '',
+                                color: '#fe646b',
+                                data: [10, 15, 20, 18, 12, 18, 25],
+                                ico: 'image://image/img10_2.png'
+                            }
+                        ],
+                        years: ['1', '2', '3', '4', '5', '6', '15']
+                    }, {
+                        list: [
+                            {
+                                name: '',
+                                color: '#6fa7fd',
+                                data: [20, 25, 30, 28, 16, 28, 30],
+                                ico: 'image://image/img10_1.png'
+                            }, {
+                                name: '',
+                                color: '#fe646b',
+                                data: [10, 15, 20, 18, 12, 18, 25],
+                                ico: 'image://image/img10_2.png'
+                            }
+                        ],
+                        years: ['1', '2', '3', '4', '5', '6', '30']
+                    }
+                    ],[
+                        {
+                            list:[
+                                {
+                                    name:'',
+                                    color:'#6fa7fd',
+                                    data: [20, 25, 30, 28, 16, 28, 30],
+                                    ico:'image://image/img10_1.png'
+                                },{
+                                    name:'',
+                                    color:'#fe646b',
+                                    data: [10, 15, 20, 18, 12, 18, 25],
+                                    ico:'image://image/img10_2.png'
+                                }
+                            ],
+                            years:['1','2','3','4','5','6','7']
+                        },{
+                            list:[
+                                {
+                                    name:'',
+                                    color:'#6fa7fd',
+                                    data: [20, 25, 30, 28, 16, 28, 30],
+                                    ico:'image://image/img10_1.png'
+                                },{
+                                    name:'',
+                                    color:'#fe646b',
+                                    data: [10, 15, 20, 18, 12, 18, 25],
+                                    ico:'image://image/img10_2.png'
+                                }
+                            ],
+                            years:['1','2','3','4','5','6','15']
+                        },{
+                            list:[
+                                {
+                                    name:'',
+                                    color:'#6fa7fd',
+                                    data: [20, 25, 30, 28, 16, 28, 30],
+                                    ico:'image://image/img10_1.png'
+                                },{
+                                    name:'',
+                                    color:'#fe646b',
+                                    data: [10, 15, 20, 18, 12, 18, 25],
+                                    ico:'image://image/img10_2.png'
+                                }
+                            ],
+                            years:['1','2','3','4','5','6','30']
+                        }
+                    ]
+                ]
+            },
+            //预警列表
+            yujingList:[
+                {code:'ZHON7M', name:'翌晨【2019】339号流动资金贷款集合资金信托计划', time:'2019/10/10', source:'AM', type:'逾期', grade:{text:'红色', color:'red'}},
+                {code:'ZHON7M', name:'翌晨【2019】339号流动资金贷款集合资金信', time:'2019/10/10', source:'AM', type:'逾期', grade:{text:'橙色', color:'orange'}, isNew:true},
+                {code:'ZHON7M', name:'翌晨【2019】339号流动资金贷款集合资金信托计', time:'2019/10/10', source:'AM', type:'逾期', grade:{text:'黄色', color:'yellow'}},
+                {code:'ZHON7M', name:'翌晨【2019】339号流动资金贷款集合资金信托计划', time:'2019/10/10', source:'AM', type:'逾期', grade:{text:'红色', color:'red'}},
+                {code:'ZHON7M', name:'翌晨【2019】339号流动资金贷款集合资金信托计划', time:'2019/10/10', source:'AM', type:'逾期', grade:{text:'红色', color:'red'}},
+                {code:'ZHON7M', name:'翌晨【2019】339号流动资金贷款集合资金信托计划', time:'2019/10/10', source:'AM', type:'逾期', grade:{text:'红色', color:'red'}},
+                {code:'ZHON7M', name:'翌晨【2019】339号流动资金贷款集合资金信', time:'2019/10/10', source:'AM', type:'逾期', grade:{text:'橙色', color:'orange'}},
+                {code:'ZHON7M', name:'翌晨【2019】339号流动资金贷款集合资金信托计', time:'2019/10/10', source:'AM', type:'逾期', grade:{text:'黄色', color:'yellow'}},
+                {code:'ZHON7M', name:'翌晨【2019】339号流动资金贷款集合资金信托计划', time:'2019/10/10', source:'AM', type:'逾期', grade:{text:'红色', color:'red'}},
+                {code:'ZHON7M', name:'翌晨【2019】339号流动资金贷款集合资金信托计划', time:'2019/10/10', source:'AM', type:'逾期', grade:{text:'红色', color:'red'}}
+            ]
+        },
+        mounted:function () {
+            this.hycwsjdbtChart();
+            },
+        methods:{
+            yqyqzsSelect:function(item){
+                this.yqyqzs.select.name = item;
+                this.hycwsjdbtChart()
+            },
+            yqyqzsTab:function(name){
+                this.yqyqzs.name = name;
+                this.hycwsjdbtChart()
+            },
+            hycwsjdbtChart: function () {
+                let i = this.yqyqzs.name,
+                    j = this.yqyqzs.select.name;
+                line_chart({
+                    dom: 'index-1-chart',
+                    data: this.yqyqzs.data[i][j]
+                })
+            },
+            //-----------
+        }
+    })
+</script>
+
+</body>
+</html>
